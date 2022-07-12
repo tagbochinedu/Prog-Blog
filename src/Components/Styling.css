@@ -1,0 +1,19 @@
+.styling {
+  background: linear-gradient(
+    180deg,
+    #6c757d 0%,
+    #6c757d 50%,
+    #23232b 50%,
+    #23232b 100%
+  );
+}
+
+.style {
+  background: linear-gradient(
+    180deg,
+    #23232b 0%,
+    #23232b 50%,
+    #ad0c24 50%,
+    #ad0c24 100%
+  );
+}
