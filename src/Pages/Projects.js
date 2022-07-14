@@ -44,7 +44,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="md:w-3/4 w-full right-0 absolute bg-crbg  border-t-2 px-10 pt-6 border-txt top-14 h-full animate__animated animate__fadeInRight">
+    <div className="md:w-3/4 w-full right-0 absolute bg-crbg  border-t-2 md:px-10 px-4 pt-6 border-txt top-14 h-full animate__animated animate__fadeInRight">
       <form onSubmit={submitHandler}>
         <div className="">
           <label className="text-txt text-lg font-semibold">

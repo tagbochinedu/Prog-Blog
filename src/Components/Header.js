@@ -6,22 +6,24 @@ import MenuClose from "./Icons/MenuClose";
 import "animate.css";
 
 const Header = () => {
-  const [width, setWidth] = useState(window.innerWidth)
+  const [width, setWidth] = useState(window.innerWidth);
   const [menu, setMenu] = useState(false);
   const { currentUser, signout } = useAuth();
 
-  const handleResize = () => {setWidth(window.innerWidth)}
-  useEffect(()=>{
-    window.addEventListener('resize', handleResize)
-    if(width>767) {
-      setMenu(false)
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    if (width > 767) {
+      setMenu(false);
     }
-  }, [width])
+  }, [width]);
   const logOutHandler = () => {
     signout();
   };
   return (
-    <header className="md:flex md:justify-between md:px-12 px-2 py-4 bg-background animate__animated animate__fadeInDown fixed top-0 right-0 z-10 left-0">
+    <header className="md:flex md:justify-between md:px-12 px-2 py-4 bg-background animate__animated animate__fadeInDown fixed top-0 right-0 z-20 left-0">
       <div className="md:w-4/12 flex justify-between">
         <Link
           className="text-xl font-bold font-serif text-hdr outline-8"
@@ -51,6 +53,9 @@ const Header = () => {
                 end
                 to="/signup"
                 className="my-9 hover:text-hdr duration-500 "
+                onClick={() => {
+                  setMenu(false);
+                }}
               >
                 Sign Up
               </NavLink>
@@ -58,14 +63,28 @@ const Header = () => {
           )}
           {!currentUser && (
             <li>
-              <NavLink end to="/signin" className="hover:text-hdr duration-500">
+              <NavLink
+                end
+                to="/signin"
+                className="hover:text-hdr duration-500"
+                onClick={() => {
+                  setMenu(false);
+                }}
+              >
                 Sign In
               </NavLink>
             </li>
           )}
           {currentUser && (
             <li>
-              <NavLink end to="/blog" className="hover:text-hdr duration-500">
+              <NavLink
+                end
+                to="/blog"
+                className="hover:text-hdr duration-500"
+                onClick={() => {
+                  setMenu(false);
+                }}
+              >
                 Blog
               </NavLink>
             </li>
@@ -73,6 +92,9 @@ const Header = () => {
           {currentUser && (
             <li className="md:my-0 my-5">
               <NavLink
+                onClick={() => {
+                  setMenu(false);
+                }}
                 end
                 to="/profile"
                 className="hover:text-hdr duration-500"
@@ -87,7 +109,10 @@ const Header = () => {
                 end
                 to="/signin"
                 className="hover:text-hdr duration-500"
-                onClick={logOutHandler}
+                onClick={() => {
+                  setMenu(false);
+                  logOutHandler();
+                }}
               >
                 Log Out
               </NavLink>
