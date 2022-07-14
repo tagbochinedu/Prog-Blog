@@ -8,7 +8,7 @@ import "animate.css";
 const Header = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [menu, setMenu] = useState(false);
-  const { currentUser, signout } = useAuth();
+  const { currentUser, signout, setIsLogged } = useAuth();
 
   const handleResize = () => {
     setWidth(window.innerWidth);
@@ -111,7 +111,8 @@ const Header = () => {
                 className="hover:text-hdr duration-500"
                 onClick={() => {
                   setMenu(false);
-                  logOutHandler();
+                  logOutHandler()
+                  setIsLogged(false);
                 }}
               >
                 Log Out

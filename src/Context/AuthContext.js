@@ -27,6 +27,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   //AUTHENTICATION CONTEXT
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLogged, setIsLogged] = useState(false)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -35,7 +36,7 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
   function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+    createUserWithEmailAndPassword(auth, email, password);
   }
   function signin(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
@@ -116,6 +117,7 @@ export function AuthProvider({ children }) {
     setBlogModal,
     modalData,
     setModalData,
+    isLogged, setIsLogged
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

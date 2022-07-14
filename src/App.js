@@ -20,11 +20,11 @@ import BlogModal from "./Components/BlogModal";
 
 
 function App() {
-  const { currentUser, blogModal } = useAuth();
+  const { currentUser, blogModal, isLogged } = useAuth();
 
   return (
     <>
-      {currentUser && <Header />}
+      {currentUser && isLogged && <Header />}
       {blogModal && <BlogModal />}
       <Routes>
         <Route exact path="/signup" element={<SignUp />} />

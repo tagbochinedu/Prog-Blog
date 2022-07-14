@@ -4,8 +4,8 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { currentUser } = useAuth();
-  if (currentUser !== null || currentUser !== undefined) {
+  const { currentUser, isLogged } = useAuth();
+  if ((currentUser !== null || currentUser !== undefined)&& isLogged) {
     console.log(currentUser);
     return <Outlet />;
   }

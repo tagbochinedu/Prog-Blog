@@ -9,12 +9,13 @@ const SignIn = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   const [errorText, setErrorText] = useState("");
-  const { signin } = useAuth();
+  const { signin, setIsLogged } = useAuth();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       await signin(emailRef.current.value, passwordRef.current.value);
+      setIsLogged(true)
       navigate("/");
     } catch(error) {
       setErrorText("wahala dey oh!!!");
