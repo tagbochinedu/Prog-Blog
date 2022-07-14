@@ -30,16 +30,16 @@ const PostList = (props) => {
 
   return (
     <div className=" border-txt border-2 rounded p-2 my-2 animate__animated animate__fadeInDown">
-      <div className="flex justify-between items-center">
+      <div className="md:flex md:justify-between md:items-center">
         <div>
           <h1 className="font-semibold bg-txt p-2 rounded">
             {props.title.toUpperCase()}
           </h1>
         </div>
-        <div>
+        <div className="mt-2 flex justify-between md:block">
           <button
             type="button"
-            className="bg-hdr rounded p-2 font-semibold mx-2"
+            className="bg-hdr rounded p-2 font-semibold md:mx-2 w-5/12 md:w-auto"
             onClick={() => {
               setEdit(!edit);
               setUuid(uuid);
@@ -50,7 +50,7 @@ const PostList = (props) => {
           </button>
           <button
             type="button"
-            className={`${" rounded p-2 font-semibold"} ${
+            className={`${" rounded p-2 font-semibold w-5/12 md:w-auto"} ${
               disabled ? "bg-txt" : "bg-hdr"
             }`}
             onClick={deleteHandler}

@@ -32,8 +32,6 @@ const Header = () => {
         <span
           className="md:hidden"
           onClick={() => {
-            let width = window.innerWidth;
-            console.log(width);
             setMenu(!menu);
           }}
         >

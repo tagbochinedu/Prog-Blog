@@ -46,8 +46,8 @@ const Welcome = () => {
         </div>
       </div>
       <div className="px-6 py-16 h-screen border-t-4 border-hdr">
-        <h1 className=" text-center text-white mx-auto text-3xl font-bold style w-40">STACK</h1>
-        <div className='h-full flex items-center'>
+        <h1 className=" text-center text-white mx-auto text-3xl font-bold style w-28">STACK</h1>
+        <div className='h-full flex items-center justify-center'>
           {" "}
           <ul className="flex justify-around items-center flex-wrap">
             {imageList.map((url) => {

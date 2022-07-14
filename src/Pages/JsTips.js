@@ -20,7 +20,7 @@ const JsTips = () => {
   };
 
   return (
-    <div className="w-3/4 top-14 right-0 absolute bg-crbg border-t-2 px-10 pt-6 border-txt h-full animate__animated animate__fadeInRight">
+    <div className="md:w-3/4 w-full top-14 right-0 absolute bg-crbg border-t-2 px-10 pt-6 border-txt h-full animate__animated animate__fadeInRight">
       <div className=" flex justify-center text-xl text-white font-bold">
         <h1>JAVASCRIPT TIPS</h1>
       </div>

@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import image from "../Resources/dashboard-image.jpg";
 import "animate.css";
@@ -14,7 +14,6 @@ const reducer = (state, action) => {
       posts: false,
       jstips: false,
       myexp: false,
-      
     };
   } else if (action.type === "ACCORDION2") {
     return {
@@ -26,7 +25,6 @@ const reducer = (state, action) => {
       posts: false,
       jstips: false,
       myexp: false,
-      
     };
   } else if (action.type === "JSTIPS") {
     return {
@@ -38,7 +36,6 @@ const reducer = (state, action) => {
       posts: false,
       jstips: !state.jstips,
       myexp: false,
-      
     };
   } else if (action.type === "POSTS") {
     return {
@@ -50,7 +47,6 @@ const reducer = (state, action) => {
       posts: true,
       jstips: !state.jstips,
       myexp: false,
-     
     };
   } else if (action.type === "MYEXP") {
     return {
@@ -61,10 +57,8 @@ const reducer = (state, action) => {
       stack: false,
       jstips: false,
       myexp: !state.myexp,
-      
     };
-  } 
-   else if (action.type === "PORTFOLIO") {
+  } else if (action.type === "PORTFOLIO") {
     return {
       acc1: false,
       acc2: false,
@@ -107,6 +101,18 @@ const reducer = (state, action) => {
 };
 
 const Dashboard = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [menu, setMenu] = useState(false);
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    if (width > 767) {
+      setMenu(false);
+    }
+  }, [width]);
+
   const [state, dispatch] = useReducer(reducer, {
     acc1: false,
     acc2: false,
@@ -143,21 +149,33 @@ const Dashboard = () => {
   return (
     <>
       <div>
-        <div className="w-1/4 left-0 top-14 bottom-0 shadow-md bg-background fixed border-r-txt border-r-2 animate__animated animate__fadeInLeft">
-          <div className="pt-4 pb-2 px-6"><h1 className="text-hdr font-2xl text-center font-bold">Admin Dashboard</h1>
+        <div className={`${"md:w-1/4 z-20 left-0 top-14 md:bottom-0 shadow-md bg-background fixed border-r-txt md:border-r-2 animate__animated animate__fadeInLeft"} ${menu ? 'bottom-0 border-r-2' : ''}`}>
+          <div className="pt-4 pb-2 px-6">
             <div className="flex items-center">
               <div className="shrink-0">
-                <img src={image} className="rounded-full w-10" alt="Avatar" />
+                <img
+                  src={image}
+                  className={`${"rounded-full "} ${menu? 'w-10' : 'w-6'}`}
+                  alt="Avatar"
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
+                />
               </div>
-              <div className="grow ml-3">
-                
+              <div
+                className={`${"grow ml-3  md:block"} ${menu ? "animate__animated animate__fadeInLeft" : "hidden"}`}
+              >
                 <p className="text-sm font-semibold text-txt">
                   Tagbo Chinedu John
                 </p>
               </div>
             </div>
           </div>
-          <ul className="relative">
+          <ul
+            className={`${"md:relative z-[-1] md:z-auto md:block"} ${
+              menu ? "animate__animated animate__fadeInLeft" : "hidden"
+            }`}
+          >
             <li className="relative accordion border-txt border-b-2  px-1">
               <p
                 className={`${"text-xl font-bold flex items-center py-4 px-6 h-12 hover:text-hdr transition duration-300 ease-in-out cursor-pointer"} 
