@@ -28,6 +28,9 @@ const Header = () => {
         <Link
           className="text-xl font-bold font-serif text-hdr outline-8"
           to="/"
+          onClick={() => {
+            setMenu(false);
+          }}
         >
           The Prog Blog
         </Link>
