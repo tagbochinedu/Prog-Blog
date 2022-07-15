@@ -6,7 +6,7 @@ const Projects = () => {
   const urlRef = useRef();
   const [preview, setPreview] = useState();
   const [disable, setDisable] = useState(true);
-  const { currentUser, uploader } = useAuth();
+  const { uploader } = useAuth();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -17,7 +17,8 @@ const Projects = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (currentUser.email !== "johntagbo2@gmail.com") {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (user.user !== "johntagbo2@gmail.com") {
       return alert(
         "Only the creator of this blog can add a project to the portfolio"
       );

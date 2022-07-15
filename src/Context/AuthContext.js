@@ -31,17 +31,17 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      localStorage.setItem("currentUser", JSON.stringify(user.email));
       setCurrentUser(user);
     });
 
     return unsubscribe;
-  }, [currentUser, isLogged]);
+  }, []);
+  
   function signup(email, password) {
     createUserWithEmailAndPassword(auth, email, password);
   }
   function signin(email, password) {
-    const users = { user: email, login: isLogged };
-    localStorage.setItem("currentUser", JSON.stringify(users));
     return signInWithEmailAndPassword(auth, email, password);
   }
   function signout() {

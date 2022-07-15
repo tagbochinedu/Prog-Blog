@@ -41,7 +41,7 @@ const Header = () => {
         </span>
       </div>
 
-      <div>
+      <div className="w-3/12">
         <ul
           className={`${"md:flex md:flex-row md:relative md:justify-between z-[-1] md:z-auto md:top-0 text-white md:text-center md:opacity-100 font-semibold w-full duration-500 ease-in transition-all"} ${
             menu ? "" : "hidden opacity-0"
