@@ -46,6 +46,9 @@ const Posts = () => {
 
   return (
     <div className="md:w-3/4 w-full right-0 top-14 absolute bg-crbg border-t-2 md:px-10 px-4 py-6 border-txt text-white animate__animated animate__fadeInRight">
+      <div className=" flex justify-center text-xl text-white font-bold">
+        <h1>POSTS</h1>
+      </div>
       <div className="border-txt border-2 rounded p-4">
         <h1 className="text-2xl text-center font-semibold ">
           My Experience Posts
