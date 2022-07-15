@@ -27,21 +27,25 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   //AUTHENTICATION CONTEXT
   const [currentUser, setCurrentUser] = useState(null);
-  const [isLogged, setIsLogged] = useState(false)
+  const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     });
+
     return unsubscribe;
-  }, []);
+  }, [currentUser, isLogged]);
   function signup(email, password) {
     createUserWithEmailAndPassword(auth, email, password);
   }
   function signin(email, password) {
+    const users = { user: email, login: isLogged };
+    localStorage.setItem("currentUser", JSON.stringify(users));
     return signInWithEmailAndPassword(auth, email, password);
   }
   function signout() {
+    localStorage.clear();
     return signOut(auth);
   }
 
@@ -117,7 +121,8 @@ export function AuthProvider({ children }) {
     setBlogModal,
     modalData,
     setModalData,
-    isLogged, setIsLogged
+    isLogged,
+    setIsLogged,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

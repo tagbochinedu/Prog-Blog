@@ -38,7 +38,6 @@ const Posts = () => {
 
         setMyexp(loadedExpPosts);
         setJstips(loadedJsPosts);
-        console.log(loadedExpPosts, loadedJsPosts);
       } catch {}
     };
     fetchPosts();

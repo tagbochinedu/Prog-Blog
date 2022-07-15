@@ -4,14 +4,15 @@ import { useAuth } from "../Context/AuthContext";
 const Stack = () => {
   const [preview, setPreview] = useState();
   const [disable, setDisable] = useState(true);
-  const { currentUser, uploader, list, imageList, deleter } = useAuth();
+  const { uploader, list } = useAuth();
   const folder = "stackFolder";
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
     list(folder);
-    if (currentUser.email === "johntagbo2@gmail.com") {
+    if (user.user === "johntagbo2@gmail.com") {
       setDisable(false);
     }
-  }, [currentUser.email, list]);
+  }, [list]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -60,27 +61,6 @@ const Stack = () => {
           SUBMIT
         </button>
       </form>
-      <ul className="flex justify-around items-baseline flex-wrap">
-        {imageList.map((url) => {
-          return (
-            <div className="m-6" key={url.name}>
-              <img className="w-32" src={url.url} alt="stack" />
-              <button
-                type="button"
-                className={`${"p-2 text-white bg-hdr font-semibold w-full rounded mt-2"} ${
-                  disable ? "bg-txt" : "bg-hdr"
-                }`}
-                onClick={() => {
-                  deleter(folder, url.name);
-                }}
-                disabled={disable}
-              >
-                DELETE
-              </button>
-            </div>
-          );
-        })}
-      </ul>
     </div>
   );
 };

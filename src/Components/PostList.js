@@ -3,19 +3,21 @@ import { useAuth } from "../Context/AuthContext";
 import { useState } from "react";
 
 const PostList = (props) => {
-  const { deletepost, currentUser } = useAuth();
+  const { deletepost } = useAuth();
   const [location, setLocation] = useState(
     props.location === "jstips" ? "jstips" : "myexp"
   );
   const [uuid, setUuid] = useState(props.uuid);
   const [edit, setEdit] = useState(false);
+
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+
   const [disabled, setDisabled] = useState(
-    currentUser.email !== "johntagbo2@gmail.com" ? true : false
+    user.user !== "johntagbo2@gmail.com" ? true : false
   );
 
   const deleteHandler = async () => {
     if (disabled) {
-      console.log(currentUser.email);
       setDisabled(disabled);
       return alert("Only the creator of this blog can delete posts");
     }

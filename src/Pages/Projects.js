@@ -9,10 +9,11 @@ const Projects = () => {
   const { currentUser, uploader } = useAuth();
 
   useEffect(() => {
-    if (currentUser.email === "johntagbo2@gmail.com") {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (user.user === "johntagbo2@gmail.com") {
       setDisable(false);
     }
-  }, [currentUser.email]);
+  }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();

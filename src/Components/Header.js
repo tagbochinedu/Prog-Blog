@@ -8,7 +8,7 @@ import "animate.css";
 const Header = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [menu, setMenu] = useState(false);
-  const { currentUser, signout, setIsLogged } = useAuth();
+  const { signout, setIsLogged } = useAuth();
 
   const handleResize = () => {
     setWidth(window.innerWidth);
@@ -41,13 +41,13 @@ const Header = () => {
         </span>
       </div>
 
-      <div className={`${currentUser ? "w-3/12" : "w-2/12"}`}>
+      <div>
         <ul
           className={`${"md:flex md:flex-row md:relative md:justify-between z-[-1] md:z-auto md:top-0 text-white md:text-center md:opacity-100 font-semibold w-full duration-500 ease-in transition-all"} ${
             menu ? "" : "hidden opacity-0"
           }`}
         >
-          {!currentUser && (
+          {!JSON.parse(localStorage.getItem('currentUser')) && (
             <li>
               <NavLink
                 end
@@ -61,7 +61,7 @@ const Header = () => {
               </NavLink>
             </li>
           )}
-          {!currentUser && (
+          {!JSON.parse(localStorage.getItem('currentUser')) && (
             <li>
               <NavLink
                 end
@@ -75,7 +75,7 @@ const Header = () => {
               </NavLink>
             </li>
           )}
-          {currentUser && (
+          {JSON.parse(localStorage.getItem('currentUser')) && (
             <li>
               <NavLink
                 end
@@ -89,7 +89,7 @@ const Header = () => {
               </NavLink>
             </li>
           )}
-          {currentUser && (
+          {JSON.parse(localStorage.getItem('currentUser')) && (
             <li className="md:my-0 my-5">
               <NavLink
                 onClick={() => {
@@ -103,7 +103,7 @@ const Header = () => {
               </NavLink>
             </li>
           )}
-          {currentUser && (
+          {JSON.parse(localStorage.getItem('currentUser')) && (
             <li>
               <NavLink
                 end

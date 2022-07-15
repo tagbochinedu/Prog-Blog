@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import ProjectList from "../Components/ProjectList";
-
+import Footer from "../Components/Footer";
 import "../Components/Styling.css";
-import Header from "../Components/Header";
 import { useAuth } from "../Context/AuthContext";
 
 const Welcome = () => {
   const [projects, setProjects] = useState([]);
-  const { list, imageList, currentUser } = useAuth();
+  const { list, imageList } = useAuth();
 
   const folder = "stackFolder";
 
@@ -36,7 +35,6 @@ const Welcome = () => {
 
   return (
     <>
-      {!currentUser && <Header />}
       <div className="h-screen flex items-center justify-center px-6">
         <div className="text-center">
           <h1 className="text-4xl  text-txt">Hi, I'm Chinedu</h1>
@@ -46,8 +44,10 @@ const Welcome = () => {
         </div>
       </div>
       <div className="px-6 py-16 h-screen border-t-4 border-hdr">
-        <h1 className=" text-center text-white mx-auto text-3xl font-bold style w-28">STACK</h1>
-        <div className='h-full flex items-center justify-center'>
+        <h1 className=" text-center text-white mx-auto text-3xl font-bold style w-28">
+          STACK
+        </h1>
+        <div className="h-full flex items-center justify-center">
           {" "}
           <ul className="flex justify-around items-center flex-wrap">
             {imageList.map((url) => {
@@ -76,6 +76,7 @@ const Welcome = () => {
           </ul>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

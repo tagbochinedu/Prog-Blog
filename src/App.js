@@ -17,12 +17,13 @@ import Posts from "./Pages/Posts";
 import Header from "./Components/Header";
 import BlogModal from "./Components/BlogModal";
 
+
 function App() {
-  const { currentUser, blogModal, isLogged } = useAuth();
+  const { blogModal } = useAuth();
 
   return (
     <>
-      {currentUser && isLogged && <Header />}
+      {JSON.parse(localStorage.getItem('currentUser')) && <Header />}
       {blogModal && <BlogModal />}
       <Routes>
         <Route exact path="/signup" element={<SignUp />} />
