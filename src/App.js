@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useAuth } from "./Context/AuthContext";
 
-
 import Welcome from "./Pages/Welcome";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
@@ -18,7 +17,6 @@ import Posts from "./Pages/Posts";
 import Header from "./Components/Header";
 import BlogModal from "./Components/BlogModal";
 
-
 function App() {
   const { currentUser, blogModal, isLogged } = useAuth();
 
@@ -29,8 +27,9 @@ function App() {
       <Routes>
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/signin" element={<SignIn />} />
-        <Route exact path="/" element={<Welcome />} />
+
         <Route element={<PrivateRoute />}>
+          <Route exact path="/" element={<Welcome />} />
           <Route exact path="/profile" element={<Profile />}>
             <Route path="/profile/create-jstips-post" element={<JsTips />} />
             <Route path="/profile/create-myexp-post" element={<MyExp />} />
