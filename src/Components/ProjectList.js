@@ -22,7 +22,7 @@ const ProjectList = (props) => {
   };
   return (
     <>
-      <div className="rounded-lg drop-shadow-2xl bg-crbg text-white max-w-xs my-4">
+      <div className="rounded-lg drop-shadow-2xl bg-crbg text-white max-w-xs my-8">
         <div className="w-80" onClick={clickHandler}>
           {!card ? <Image image={image} /> : <Video filtered={filtered} />}
         </div>

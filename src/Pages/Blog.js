@@ -3,7 +3,7 @@ import "animate.css";
 
 const Blog = () => {
   return (
-    <div className="flex justify-around items-center px-20 h-screen bg-background flex-wrap">
+    <div className="flex justify-around items-center px-20 h-screen bg-background flex-wrap w-full">
       <Link to="/blogtips" className="animate__animated animate__fadeInLeft">
         <img
           className="rounded-xl max-w-xs drop-shadow-2xl"
