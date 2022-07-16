@@ -149,7 +149,7 @@ const Dashboard = () => {
   return (
     <>
       <div className='h-screen'>
-        <div className={`${"md:w-1/4 z-10 left-0 top-14 md:bottom-0 shadow-md bg-background fixed border-r-txt md:border-r-2 animate__animated animate__fadeInLeft"} ${menu ? 'border-r-2 bottom-16' : ''}`}>
+        <div className={`${"md:w-1/4 z-10 left-0 top-14 md:bottom-0 shadow-md bg-background fixed border-r-txt md:border-r-2 animate__animated animate__fadeInLeft"} ${menu ? 'border-r-2 bottom-0' : ''}`}>
           <div className="pt-4 pb-2 px-6">
             <div className="flex items-center">
               <div className="shrink-0">
