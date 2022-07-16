@@ -10,13 +10,15 @@ const Projects = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
-    if (user.user === "johntagbo2@gmail.com") {
+    if (user === "johntagbo2@gmail.com") {
       setDisable(false);
     }
   }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+
     const user = JSON.parse(localStorage.getItem("currentUser"));
     if (user.user !== "johntagbo2@gmail.com") {
       return alert(

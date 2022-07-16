@@ -13,7 +13,7 @@ const PostList = (props) => {
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
   const [disabled, setDisabled] = useState(
-    user.user !== "johntagbo2@gmail.com" ? true : false
+    user !== "johntagbo2@gmail.com" ? true : false
   );
 
   const deleteHandler = async () => {
