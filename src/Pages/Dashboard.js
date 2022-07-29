@@ -155,7 +155,7 @@ const Dashboard = () => {
               <div className="shrink-0">
                 <img
                   src={image}
-                  className={`${"rounded-full md:w-10"} ${menu? 'w-10' : 'w-6'}`}
+                  className={`${"rounded-full md:w-10 cursor-pointer md:cursor-auto"} ${menu? 'w-10' : 'w-6'}`}
                   alt="Avatar"
                   onClick={() => {
                     width<767 && setMenu(!menu);

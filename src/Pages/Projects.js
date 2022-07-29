@@ -1,12 +1,9 @@
 import { useRef, useState, useEffect } from "react";
-import { useAuth } from "../Context/AuthContext";
 
 const Projects = () => {
   const titleRef = useRef();
   const urlRef = useRef();
-  const [preview, setPreview] = useState();
   const [disable, setDisable] = useState(true);
-  const { uploader } = useAuth();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -18,13 +15,10 @@ const Projects = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-
-    
     const project = {
       title: titleRef.current.value,
       url: urlRef.current.value,
     };
-    const folder = "previewFolder";
 
     try {
       const response = await fetch(
@@ -35,7 +29,6 @@ const Projects = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      uploader(folder, preview);
       await response.json();
     } catch {
       console.log("could not create project");
@@ -70,32 +63,8 @@ const Projects = () => {
             required
           />
         </div>
-        <div className="mt-6 mb-12 h-40">
-          <div className="flex justify-between mb-2">
-            <label className="text-txt text-lg font-semibold">
-              PROJECT PREVIEW
-            </label>
-            <button
-              type="reset"
-              className="rounded text-white px-4 py font-semibold bg-hdr"
-            >
-              Clear
-            </button>
-          </div>
-          <div className="flex justify-center items-center h-full border-txt border-4 rounded border-dashed">
-            <input
-              type="file"
-              className="text-white rounded-md font-semibold px-2 block outline-none "
-              onChange={(e) => {
-                setPreview(e.target.files[0]);
-              }}
-              placeholder="Project Preview"
-              required
-            />
-          </div>
-        </div>
         <button
-          className={`${"rounded text-white px-4 py-2 font-semibold w-full"} ${
+          className={`${"rounded text-white px-4 py-2 font-semibold w-full my-4"} ${
             disable ? "bg-txt" : "bg-hdr"
           }`}
           type="submit"

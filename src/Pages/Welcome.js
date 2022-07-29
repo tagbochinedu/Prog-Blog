@@ -1,17 +1,14 @@
 import { useState, useEffect } from "react";
 import ProjectList from "../Components/ProjectList";
+import { stack } from "../Resources/CardImages";
 import Footer from "../Components/Footer";
 import "../Components/Styling.css";
-import { useAuth } from "../Context/AuthContext";
+
 
 const Welcome = () => {
   const [projects, setProjects] = useState([]);
-  const { list, imageList } = useAuth();
-
-  const folder = "stackFolder";
 
   useEffect(() => {
-    list(folder);
     const fetchProjects = async () => {
       try {
         const loadedProjects = [];
@@ -31,7 +28,7 @@ const Welcome = () => {
       } catch {}
     };
     fetchProjects();
-  }, [list]);
+  }, []);
 
   return (
     <>
@@ -50,7 +47,7 @@ const Welcome = () => {
         <div className="h-full flex items-center justify-center">
           {" "}
           <ul className="flex justify-around items-center flex-wrap">
-            {imageList.map((url) => {
+            {stack.map((url) => {
               return (
                 <div className="m-6" key={url.name}>
                   <img className="w-28" src={url.url} alt="stack" />

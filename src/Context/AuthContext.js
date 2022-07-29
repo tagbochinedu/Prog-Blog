@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../Firebase";
 import {
   onAuthStateChanged,
@@ -6,14 +6,6 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { storage } from "../Firebase";
-import {
-  ref as ref_strg,
-  uploadBytes,
-  listAll,
-  getDownloadURL,
-  deleteObject,
-} from "firebase/storage";
 import { db } from "../Firebase";
 import { ref as ref_db, set, remove, update } from "firebase/database";
 import { uid } from "uid";
@@ -70,57 +62,18 @@ export function AuthProvider({ children }) {
     });
   }
 
-  //STORAGE CONTEXT
-  const [imageList, setImageList] = useState([]);
-  const [modalData, setModalData] = useState();
-
-  const list = useCallback((folder) => {
-    const imageListRef = ref_strg(storage, `${folder}`);
-    setImageList([]);
-    listAll(imageListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setImageList((prev) => [
-            ...prev,
-            { url: url, name: item.name.split(".").shift() },
-          ]);
-        });
-      });
-    });
-  }, []);
-  function uploader(folder, image) {
-    const imageRef = ref_strg(storage, `${folder}/${image.name}`);
-    uploadBytes(imageRef, image).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        setImageList((prev) => [...prev, url]);
-        console.log(imageList);
-        alert("done");
-      });
-    });
-  }
-  function deleter(folder, name) {
-    const imageRef = ref_strg(storage, `${folder}/${name}`);
-    deleteObject(imageRef)
-      .then(() => {})
-      .catch((error) => {});
-  }
+  
 
   const value = {
     currentUser,
     signup,
     signin,
     signout,
-    uploader,
-    list,
-    imageList,
-    deleter,
     createpost,
     deletepost,
     updatepost,
     blogModal,
     setBlogModal,
-    modalData,
-    setModalData,
     isLogged,
     setIsLogged,
   };
