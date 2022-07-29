@@ -1,4 +1,4 @@
-import {Route, Routes} from 'react-router-dom'
+import { Route, Routes } from "react-router-dom";
 import { useAuth } from "./Context/AuthContext";
 
 import Welcome from "./Pages/Welcome";
@@ -12,18 +12,17 @@ import BlogExperiences from "./Pages/BlogExperiences";
 import MyExp from "./Pages/MyExp";
 import JsTips from "./Pages/JsTips";
 import Projects from "./Pages/Projects";
-import Stack from "./Pages/Stack";
+
 import Posts from "./Pages/Posts";
 import Header from "./Components/Header";
 import BlogModal from "./Components/BlogModal";
-
 
 function App() {
   const { blogModal } = useAuth();
 
   return (
     <>
-      {JSON.parse(localStorage.getItem('currentUser')) && <Header />}
+      {JSON.parse(localStorage.getItem("currentUser")) && <Header />}
       {blogModal && <BlogModal />}
       <Routes>
         <Route exact path="/signup" element={<SignUp />} />
@@ -35,7 +34,6 @@ function App() {
             <Route path="/profile/create-jstips-post" element={<JsTips />} />
             <Route path="/profile/create-myexp-post" element={<MyExp />} />
             <Route path="/profile/projects" element={<Projects />} />
-            <Route path="/profile/stack" element={<Stack />} />
             <Route path="/profile/posts" element={<Posts />} />
           </Route>
           <Route exact path="/blog" element={<Blog />} />
