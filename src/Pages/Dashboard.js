@@ -10,7 +10,7 @@ const reducer = (state, action) => {
       acc2: false,
       portfolio: false,
       projects: false,
-      stack: false,
+      
       posts: false,
       jstips: false,
       myexp: false,
@@ -32,7 +32,7 @@ const reducer = (state, action) => {
       acc2: false,
       portfolio: false,
       projects: false,
-      stack: false,
+    
       posts: false,
       jstips: !state.jstips,
       myexp: false,
@@ -43,7 +43,7 @@ const reducer = (state, action) => {
       acc2: false,
       portfolio: false,
       projects: false,
-      stack: false,
+    
       posts: true,
       jstips: !state.jstips,
       myexp: false,
@@ -54,7 +54,7 @@ const reducer = (state, action) => {
       acc2: false,
       portfolio: false,
       projects: false,
-      stack: false,
+     
       jstips: false,
       myexp: !state.myexp,
     };
@@ -64,20 +64,7 @@ const reducer = (state, action) => {
       acc2: false,
       portfolio: !state.portfolio,
       projects: false,
-      stack: false,
-      posts: false,
-      jstips: false,
-      myexp: false,
-      comments: false,
-      likes: false,
-    };
-  } else if (action.type === "STACK") {
-    return {
-      acc1: false,
-      acc2: false,
-      portfolio: true,
-      projects: false,
-      stack: !state.stack,
+      
       posts: false,
       jstips: false,
       myexp: false,
@@ -90,7 +77,6 @@ const reducer = (state, action) => {
       acc2: false,
       portfolio: true,
       projects: !state.projects,
-      stack: false,
       posts: false,
       jstips: false,
       myexp: false,
@@ -121,7 +107,6 @@ const Dashboard = () => {
     myexp: false,
     portfolio: false,
     projects: false,
-    stack: false,
   });
 
   const clickHandler1 = () => {
@@ -141,9 +126,6 @@ const Dashboard = () => {
   };
   const accHandler5 = () => {
     dispatch({ type: "PROJECTS" });
-  };
-  const accHandler6 = () => {
-    dispatch({ type: "STACK" });
   };
 
   return (
@@ -247,17 +229,7 @@ const Dashboard = () => {
                     Projects
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    to="/profile/stack"
-                    className={`${"items-center text-sm py-4 pl-12 pr-6 h-6 hover:text-hdr transition duration-300 ease-in-out"} ${
-                      state.portfolio ? "flex" : "hidden"
-                    } ${state.stack ? "text-hdr" : "text-txt"}`}
-                    onClick={accHandler6}
-                  >
-                    Stack
-                  </Link>
-                </li>
+                
               </ul>
             </li>
           </ul>
