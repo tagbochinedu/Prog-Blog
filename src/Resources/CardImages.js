@@ -5,6 +5,7 @@ import appStation from "./appStation.png";
 import WebsiteBlog from "./Website-Blog.png";
 import thefoodplace from "./the-food-place.png";
 import friendlyweather from './friendly-weather.png'
+import doordashclone from './DoorDash-Clone.png'
 import one from "./1.png";
 import two from "./2.png";
 import three from "./3.png";
@@ -20,7 +21,8 @@ export const images = [
   { name: "appStation", url: appStation },
   { name: "Website-Blog", url: WebsiteBlog },
   { name: "the-food-place", url: thefoodplace },
-  {name: 'friendly-weather', url: friendlyweather}
+  {name: 'friendly-weather', url: friendlyweather},
+  {name: 'DoorDash-Clone', url: doordashclone}
 ];
 
 export const stack = [
