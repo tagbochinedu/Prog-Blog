@@ -6,6 +6,7 @@ import WebsiteBlog from "./Website-Blog.png";
 import thefoodplace from "./the-food-place.png";
 import friendlyweather from './friendly-weather.png'
 import doordashclone from './DoorDash-Clone.png'
+import inboundemotion from './inbound.png'
 import one from "./1.png";
 import two from "./2.png";
 import three from "./3.png";
@@ -13,6 +14,7 @@ import four from "./4.png";
 import five from "./5.png";
 import six from "./6.png";
 import seven from "./7.png";
+
 
 export const images = [
   { name: "project1", url: project1 },
@@ -22,7 +24,7 @@ export const images = [
   { name: "Website-Blog", url: WebsiteBlog },
   { name: "the-food-place", url: thefoodplace },
   {name: 'friendly-weather', url: friendlyweather},
-  {name: 'DoorDash-Clone', url: doordashclone}
+  {name: 'DoorDash-Clone', url: doordashclone}, {name: 'Inboundemotion-Clone', url: inboundemotion}
 ];
 
 export const stack = [
