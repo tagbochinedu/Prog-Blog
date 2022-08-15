@@ -36,7 +36,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="md:w-3/4 w-11/12 right-0 absolute bg-crbg  border-t-2 md:px-10 px-4 pt-6 border-txt top-14 h-full animate__animated animate__fadeInRight">
+    <div className="md:w-3/4 w-10/12 right-0 absolute bg-crbg  border-t-2 md:px-10 px-4 pt-6 border-txt top-14 h-full animate__animated animate__fadeInRight">
       <div className=" flex justify-center text-xl text-white font-bold">
         <h1>PROJECTS</h1>
       </div>
